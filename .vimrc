@@ -32,8 +32,8 @@ Plugin 'tomasiser/vim-code-dark'
 
 " Plugin 'file://~/.vim/plugin/cpp.vim', {'pinned': 1}
 " Plugin 'file://~/.vim/plugin/bracket.vim', {'pinned': 1}
-Plugin 'file://~/.vim/plugin/argtextobj.vim', {'pinned': 1}
-Plugin 'file://~/.vim/plugin/a.vim', {'pinned': 1}
+Plugin 'vim-scripts/argtextobj.vim'
+Plugin 'vim-scripts/a.vim'
 
 let g:Tlist_Ctags_Cmd = '$HOME/.vim/plugin/ctags-5.8/ctags'
 Plugin 'file://~/.vim/plugin/taglist.vim', {'pinned': 1}
@@ -61,8 +61,6 @@ let mapleader = "-"
 " set color scheme to codedark
 colorscheme codedark
 
-let g:python_highlight_all = 1
-
 " add line numbers
 set number
 set relativenumber
@@ -79,12 +77,10 @@ set autoindent
 set expandtab
 
 " text navigating macros
-
 set incsearch
 set hlsearch
 
 " text editing macros
-nnoremap <leader>d ddp
 inoremap <c-u> <esc>viwUea
 cabbrev help tab help
 nnoremap <leader>h1 i/* <esc>76A=<esc>A<cr><BS> *<cr>*<cr>*/<esc>k76A=<esc>^a<Space><esc>k30A <esc>A
@@ -121,6 +117,3 @@ nnoremap <leader>9 9gt
 nnoremap <leader>t :term
 nnoremap <leader>tt :term<cr>
 nnoremap <leader>tl :term ls<cr>
-nnoremap <leader>tr :term ./logman_debug sample-log.txt<cr>
-nnoremap <leader>tm :term make
-
