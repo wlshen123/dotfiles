@@ -2,6 +2,14 @@
 
 ## vimrc
 
+To use this vimrc, simply download the vimrc file and put it in your home folder.
+
+To do this from the command line:
+
+```bash
+curl -o ~/.vimrc https://raw.githubusercontent.com/wlshen123/dotfiles/master/.vimrc
+```
+
 This vimrc uses Vundle for plugin management. Visit the [Vundle github page](https://github.com/VundleVim/Vundle.vim)
 for details on how to use Vundle
 
