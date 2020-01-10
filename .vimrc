@@ -9,34 +9,22 @@ call vundle#begin()
 
 " let Vundle manage Vundle, required
 Plugin 'VundleVim/Vundle.vim'
-
 " real-time syntax highlighting
 Plugin 'dense-analysis/ale'
-
-" file explorer within vim
-Plugin 'scrooloose/nerdtree'
-
-" syntax highlighting
-" Plugin 'octol/vim-cpp-enhanced-highlight'
-" Plugin 'vim-python/python-syntax'
-
-" Plugin 
-Plugin 'file://~/.vim/plugin/python.vim', {'pinned': 1}
-
 " auto bracket-completion (and quotes)
 Plugin 'jiangmiao/auto-pairs'
-
 " color scheme
 Plugin 'tomasr/molokai'
 Plugin 'tomasiser/vim-code-dark'
-
-" Plugin 'file://~/.vim/plugin/cpp.vim', {'pinned': 1}
-" Plugin 'file://~/.vim/plugin/bracket.vim', {'pinned': 1}
+" utilities
 Plugin 'vim-scripts/argtextobj.vim'
 Plugin 'vim-scripts/a.vim'
-
-let g:Tlist_Ctags_Cmd = '$HOME/.vim/plugin/ctags-5.8/ctags'
-Plugin 'file://~/.vim/plugin/taglist.vim', {'pinned': 1}
+" ctags
+Plugin 'vim-scripts/taglist.vim'
+" filetree viewer
+Plugin 'preservim/nerdtree'
+" real-time syntax highlighting
+Plugin 'dense-analysis/ale'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -60,6 +48,12 @@ let mapleader = "-"
 
 " set color scheme to codedark
 colorscheme codedark
+syntax on
+
+" some options for taglist
+let g:Tlist_Auto_Open=1
+let g:Tlist_Use_Right_Window=1
+let g:Tlist_WinWidth=50
 
 " add line numbers
 set number
@@ -83,20 +77,18 @@ set hlsearch
 " text editing macros
 inoremap <c-u> <esc>viwUea
 cabbrev help tab help
-nnoremap <leader>h1 i/* <esc>76A=<esc>A<cr><BS> *<cr>*<cr>*/<esc>k76A=<esc>^a<Space><esc>k30A <esc>A
-nnoremap <leader>h2 0i/*<esc>25a=<esc>a<Space><esc>^la<Space><esc>A<Space><esc>25A=<esc>A */<esc>^2W
-nnoremap <leader>h3 0i/*<esc>10a=<esc>a<Space><esc>^la<Space><esc>A<Space><esc>10A=<esc>A */<esc>^2W
-
+nnoremap <leader>h1 0D:r $HOME/.vim/snippets/h1_c.txt<cr>j$p
+nnoremap <leader>h2 0D:r $HOME/.vim/snippets/h2_c.txt<cr>2elp
+nnoremap <leader>h3 0D:r $HOME/.vim/snippets/h3_c.txt<cr>2elp
 
 " vimrc macros
 nnoremap <leader>ev :vsplit $MYVIMRC<cr>
 nnoremap <leader>sv :source $MYVIMRC<cr>
-nnoremap <leader>i3 :vsplit $HOME/.i3/config<cr>
+nnoremap <leader>i3 :vsplit $HOME/.config/i3/config<cr>
 
 " file handling macros
-nnoremap <leader>q :q!<cr>
-nnoremap <leader>s :w!<cr>
-nnoremap <c-s> :w!<cr>
+nnoremap <leader>q :q<cr>
+nnoremap <leader>s :w<cr>
 
 " filesystem navigating macros
 nnoremap <leader>f :tabf
@@ -115,5 +107,8 @@ nnoremap <leader>9 9gt
 
 " integrated terminal commands
 nnoremap <leader>t :term
-nnoremap <leader>tt :term<cr>
+nnoremap <leader>tt :term<cr><c-w>J
 nnoremap <leader>tl :term ls<cr>
+
+" ctags commands
+nnoremap <leader>g :TlistToggle<cr>
