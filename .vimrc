@@ -23,8 +23,6 @@ Plugin 'vim-scripts/a.vim'
 Plugin 'vim-scripts/taglist.vim'
 " filetree viewer
 Plugin 'preservim/nerdtree'
-" real-time syntax highlighting
-Plugin 'dense-analysis/ale'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
