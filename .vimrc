@@ -23,6 +23,8 @@ Plugin 'vim-scripts/a.vim'
 Plugin 'vim-scripts/taglist.vim'
 " filetree viewer
 Plugin 'preservim/nerdtree'
+" latex previewer
+Plugin 'xuhdev/vim-latex-live-preview'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -49,9 +51,24 @@ colorscheme codedark
 syntax on
 
 " some options for taglist
-let g:Tlist_Auto_Open=1
+" let g:Tlist_Auto_Open=1
 let g:Tlist_Use_Right_Window=1
 let g:Tlist_WinWidth=50
+
+" options for vim-latex-live-preview
+augroup vim-llp-settings
+    autocmd!
+    autocmd Filetype tex setl updatetime=1
+    autocmd Filetype tex nnoremap <leader>rr :LLPStartPreview<cr>
+augroup END
+let g:livepreview_previewer = "zathura"
+let g:livepreview_cursorhold_recompile = 0
+
+" options for termdebug
+augroup vim-vdebugger
+    packadd termdebug
+augroup END
+let g:termdebug_wide = 163
 
 " add line numbers
 set number
@@ -59,6 +76,8 @@ set relativenumber
 
 " lines don't wrap
 set nowrap
+
+set showcmd
 
 " indents and tabs are set to 4 spaces
 set shiftwidth=4
@@ -80,8 +99,8 @@ nnoremap <leader>h2 0D:r $HOME/.vim/snippets/h2_c.txt<cr>2elp
 nnoremap <leader>h3 0D:r $HOME/.vim/snippets/h3_c.txt<cr>2elp
 
 " vimrc macros
-nnoremap <leader>ev :vsplit $MYVIMRC<cr>
-nnoremap <leader>sv :source $MYVIMRC<cr>
+nnoremap <leader>cev :vsplit $MYVIMRC<cr>
+nnoremap <leader>csv :source $MYVIMRC<cr>
 nnoremap <leader>i3 :vsplit $HOME/.config/i3/config<cr>
 
 " file handling macros
@@ -103,10 +122,18 @@ nnoremap <leader>7 7gt
 nnoremap <leader>8 8gt
 nnoremap <leader>9 9gt
 
+" window navigating macros
+nnoremap <c-h> <c-w>h
+nnoremap <c-j> <c-w>j
+nnoremap <c-k> <c-w>k
+nnoremap <c-l> <c-w>l
+
 " integrated terminal commands
 nnoremap <leader>t :term
-nnoremap <leader>tt :term<cr><c-w>J
+nnoremap <leader>tt :tab term<cr>
+nnoremap <leader>tm :term make
 nnoremap <leader>tl :term ls<cr>
+nnoremap <leader>td :Termdebug<cr>
 
 " ctags commands
 nnoremap <leader>g :TlistToggle<cr>
